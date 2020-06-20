@@ -94,9 +94,9 @@ def mars_facts():
     marsFacts_df = pd.read_html(factsUrl)[0]
     marsFacts_df.columns=["Description", "Value"]
     marsFacts_df.set_index("Description", inplace=True)
-    marsFacts = marsFacts_df.to_html()
-           
-    return marsFacts
+    marsFacts = marsFacts_df.to_html()     
+    marsFacts2 = marsFacts.replace('<tr style="text-align: right;">','<tr style="text-align: left;">') 
+    return marsFacts2
 
 
 def mars_hemi():
@@ -140,14 +140,14 @@ def scrape():
     news_title, news_paragraph = mars_news()
     jpl_image_url = mars_image()
     weatherTweet = mars_weather()
-    marsFacts = mars_facts()
+    marsFacts2 = mars_facts()      
     hemisphere_image_urls = mars_hemi()
     mars_data = { 
                 'headline': news_title,
                 'paragraph': news_paragraph,
                 'SpaceImages': jpl_image_url,
                 'MarsWeather': weatherTweet,
-                'MarsFacts': marsFacts,
+                'MarsFacts': marsFacts2,
                 'MarsHemi': hemisphere_image_urls
             }
     
