@@ -55,7 +55,7 @@ def mars_image():
     jpl_image_url = jpl_image.select_one("figure.lede a img").get("src")
     jpl_image_url = f"https://www.jpl.nasa.gov/{jpl_image_url}"
 
-    #mars_data['featured_image_url'] = jpl_image_url 
+    
     browser.quit()
     return jpl_image_url
     
@@ -82,7 +82,7 @@ def mars_weather():
         else: 
             pass
 
-    #mars_data['weather_tweet'] = weatherTweet
+    
     browser.quit()
     return weatherTweet
 
